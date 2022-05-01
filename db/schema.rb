@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_25_080435) do
-  create_table "microposts", force: :cascade do |t|
+ActiveRecord::Schema[7.0].define(version: 2022_05_01_193319) do
+  create_table "posts", force: :cascade do |t|
     t.text "content"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "picture"
-    t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
-    t.index ["user_id"], name: "index_microposts_on_user_id"
+    t.index ["user_id", "created_at"], name: "index_posts_on_user_id_and_created_at"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -47,5 +47,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_25_080435) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "microposts", "users"
+  add_foreign_key "posts", "users"
 end
