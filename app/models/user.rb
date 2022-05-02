@@ -112,6 +112,18 @@ class User < ApplicationRecord
     # following.find(other_user)
   end
 
+  def self.search(search)
+    if search
+      user = User.find_by(name: search)
+      if user
+        self.where(id: user)
+      else
+        User.all
+      end
+    else
+      User.all
+    end
+  end
 
   private
 

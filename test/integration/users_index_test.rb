@@ -12,16 +12,11 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
     get users_path
     assert_template 'users/index'
     assert_select 'div.pagination' 
-    first_page_of_users = User.paginate(page: 1) 
-    first_page_of_users.each do |user|
-      assert_select 'a[href=?]', user_path(user), text: user.name 
-      unless user == @admin
-        assert_select 'a[href=?]', user_path(user), text: 'delete' 
-      end  
-    end
-    #assert_difference 'User.count', -1 do
-    #  delete user_path(@non_admin) 
-    #end
+    first_page_of_users = User.first   
+    assert_select 'a[href=?]', user_path(first_page_of_users), text: first_page_of_users.name 
+    unless first_page_of_users == @admin
+      assert_select 'a[href=?]', user_path(first_page_of_users), text: 'delete' 
+    end  
   end
     
   test "index as non-admin" do 
