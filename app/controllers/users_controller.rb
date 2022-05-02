@@ -7,12 +7,12 @@ class UsersController < ApplicationController
   before_action :admin_user,     only: :destroy  
 
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.paginate(page: params[:page], per_page: 5)
   end
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.paginate(page: params[:page]) 
+    @posts = @user.posts.paginate(page: params[:page], per_page: 5) 
   end
   
   def new
@@ -24,7 +24,6 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)         # mass assignment, involves initializing a ruby variable using a hash of values≈] 
     if @user.save 
-      # handle a successful save
       @user.send_activation_email
       flash[:success] = "Please check your email to activate your account"
       redirect_to root_path
@@ -85,5 +84,4 @@ class UsersController < ApplicationController
     def admin_user
       redirect_to(root_path) unless current_user.admin?
     end
-
 end

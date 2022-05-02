@@ -252,10 +252,11 @@ input {
     .user {
         margin-top: 5em;
         padding-top: 0;
+        margin-left: 30px; 
     }
     .content {
         display: block; 
-        margin-left: 60px; 
+        margin-left: 30px; 
         img {
             display: block;
             padding: 5px 0; 
@@ -264,7 +265,7 @@ input {
     .timestamp{
         color: $gray-light;
         display: block; 
-        margin-left: 60px;
+        margin-left: 30px;
     }
     .gravatar {
         float: left;
@@ -285,4 +286,6 @@ span.picture {
     }
 }
 
-
+.a-primary{
+    color: #FF3333;
+}
