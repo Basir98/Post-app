@@ -49,6 +49,7 @@ group :development do
   gem 'listen'
   gem 'spring'
   gem 'spring-watcher-listen'
+  gem 'sqlite3'  
 end
 
 group :test do
@@ -64,5 +65,4 @@ end
 
 group :production do
   gem 'pg'         #gem to use in production environment
-  gem 'fog'
 end
