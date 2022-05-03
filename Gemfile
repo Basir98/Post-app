@@ -5,8 +5,6 @@ ruby "3.0.0"
 
 gem "rails", "~> 7.0.2", ">= 7.0.2.3"
 
-gem 'sqlite3'  
-
 gem 'bcrypt',         '3.1.12'
 
 gem 'bootstrap-sass'
@@ -42,6 +40,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 
 group :development, :test do
+  gem 'sqlite3'    #gem to use in development-test environment
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 end
 
@@ -64,6 +63,5 @@ group :test do
 end
 
 group :production do
-  #gem 'pg'
-  #gem 'fog'
+  gem 'pg'         #gem to use in production environment
 end
