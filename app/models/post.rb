@@ -5,6 +5,7 @@ class Post < ApplicationRecord
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 140 }  # validate presence of content and also max 140 characters
   validate  :picture_size
+  has_many :likes, dependent: :destroy
 
   private 
 

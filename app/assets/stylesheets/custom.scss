@@ -266,6 +266,9 @@ input {
         color: $gray-light;
         display: block; 
         margin-left: 30px;
+        .comment_buttons{
+            display: inline-block;
+        }
     }
     .gravatar {
         float: left;
