@@ -40,7 +40,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 
 group :development, :test do
-  gem 'sqlite3', '~> 1.3.6'  
+  gem 'sqlite3', '~> 1.3', '>= 1.3.6'  
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 end
 
