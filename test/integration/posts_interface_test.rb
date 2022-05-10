@@ -32,6 +32,12 @@ class PostsInterfaceTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to root_path
 
+    #Dislike post
+    assert_no_difference 'Dislike.count' do
+      post dislikes_path, params: { dislike: { user: @user, user_id: users(:test).id, post: @post } } 
+    end
+    assert_redirected_to root_path
+
     # Delete post
     first_post = @user.posts.paginate(page: 1).first 
     assert_difference 'Post.count', -1 do

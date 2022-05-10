@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+three:
+  user: test
+  post: orange
+
+four:
+  user: archer
+  post: tau_manifesto

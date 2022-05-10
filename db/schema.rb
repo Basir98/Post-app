@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_06_161951) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_08_182335) do
+  create_table "dislikes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_dislikes_on_post_id"
+    t.index ["user_id", "post_id"], name: "index_dislikes_on_user_id_and_post_id", unique: true
+    t.index ["user_id"], name: "index_dislikes_on_user_id"
+  end
+
   create_table "likes", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "post_id", null: false
@@ -57,6 +67,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_06_161951) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "dislikes", "posts"
+  add_foreign_key "dislikes", "users"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
   add_foreign_key "posts", "users"
