@@ -26,8 +26,13 @@ class PostsInterfaceTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_match content, response.body
 
+    # Like post
+    assert_difference 'Like.count', 0 do
+      post likes_path, params: { like: { user: @user, user_id: users(:test).id, post: @post } } 
+    end
+    assert_redirected_to root_path
+
     # Delete post
-    assert_select 'a', text: 'delete'
     first_post = @user.posts.paginate(page: 1).first 
     assert_difference 'Post.count', -1 do
       delete post_path(first_post)
