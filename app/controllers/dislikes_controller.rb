@@ -1,4 +1,6 @@
 class DislikesController < ApplicationController
+  before_action :logged_in_user, only: [:create, :destroy]
+
   def create
     @dislike = current_user.dislikes.new(dislike_params)
     if !@dislike.save

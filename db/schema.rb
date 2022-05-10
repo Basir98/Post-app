@@ -12,8 +12,8 @@
 
 ActiveRecord::Schema[7.0].define(version: 2022_05_08_182335) do
   create_table "dislikes", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "post_id", null: false
+    t.integer "user_id", null: false
+    t.integer "post_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_dislikes_on_post_id"
